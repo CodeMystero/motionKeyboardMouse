@@ -40,9 +40,13 @@
 
 - 복잡한 모션을 통한 제어 구현
 
-## Deliverables:
 
--현
+```mermaid
+gantt
+    dateFormat  MM-DD-YYYY
+    title       Example Gantt Chart
+	
+	section Office Furniture
 		Research New Furniture	:done, 05-09, 3d
                 Order and Purchase Furniture  :crit, 05-18, 1d
 		Furniture Delivered to Office	: a1, 06-06, 2d
