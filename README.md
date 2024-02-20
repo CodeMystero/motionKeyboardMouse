@@ -1,7 +1,7 @@
-# motionKeyboardMouse
+# 모션 트랙킹 마우스&키보드
 
 
-# 모션 사용법
+## 모션 사용법
 
 ![마우스 클릭](proofvideo/mouseclick.gif)
 
