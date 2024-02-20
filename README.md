@@ -42,35 +42,7 @@
 
 ## Deliverables:
 
-- Define specific completed deliverables by the end of the project.
-- [insert]
-- [insert]
-
-## 업무 및 예산
-
-| Task | Estimated Costs | Notes |
-|------|-----------------|-------|
-|영상 입력및 출력 (logi camera)|10만원| |
-|음성 인식을 위한 마이크|3만원|*유선 마이크 이어폰*|
-|**TOTAL**|**13만원원**|*estimated*|
-
-
-## Closing Checklist
-
-- [ ] 모든 납품물이 품질 요구 사항에 대해 확인 및 테스트됨
-- [ ] 문서 작성 및/또는 교육 수행 (*필요한 경우*)
-- [ ] 고객/경영/이해관계자 승인 획득
-- [ ] 인원 재할당, 초과 장비/자재 폐기 및 시설 해제
-- [ ] 프로젝트 문서 작성 (*문제, 배운 점 등*)
-- [ ] 최종 프로젝트 상태 및 결과를 고객/경영/이해관계자에게 보고
-- [ ] 프로젝트 완료 선언
-
-```mermaid
-gantt
-    dateFormat  MM-DD-YYYY
-    title       모션인식 마우스 & 음성인식 키보드 프로젝트 GANTT CHART
-	
-	section Office Furniture
+-현
 		Research New Furniture	:done, 05-09, 3d
                 Order and Purchase Furniture  :crit, 05-18, 1d
 		Furniture Delivered to Office	: a1, 06-06, 2d
