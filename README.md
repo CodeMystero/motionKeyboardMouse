@@ -20,10 +20,6 @@
 - [insert]
 - [insert]
 
-## Risks:
-
-- 위험 없음
-
 ## Assumptions:
 
 - 음성인식 기술을 사용하는 부분에서 인터넷 속도에 제한을 받는 경우가 있습니다.
@@ -44,21 +40,15 @@
 ```mermaid
 gantt
     dateFormat  MM-DD-YYYY
-    title       Example Gantt Chart
+    title       모션인식 마우스& 음성인식 키보드 프로젝트 Gantt Chart
 	
-	section Office Furniture
-		Research New Furniture	:done, 05-09, 3d
-                Order and Purchase Furniture  :crit, 05-18, 1d
-		Furniture Delivered to Office	: a1, 06-06, 2d
-		Distribute Furniture	:a2, after a1, 5d
-		Treat Furniture with Scotchgard	:after a2, 3d
+	section 음성인식 Speech to Text 코드 구현
+		자료 조사 및 코드 해석 :done, 2024-02-18, 2d
+                코드 작성 및 STT구현 완료  :crit, 2024-02-19, 1d
 	
-	section Computer Upgrades
-		Research New Computers	:done, 05-09, 3d
-                Order and Purchase Computers  :crit, 05-18, 1d
-		Computers Delivered to Office	: a1, 06-06, 2d
-		Install Computers	:a2, after a1, 3d
-		Image and Update Computers	:after a2, 5d
+	section 손동작 인식 마우스 제어
+		자료조사 및 코드 해석	: 2024-02-20, 1d
+                영상에 모션 마킹  :crit, 2024-02-21, 1d
 ```
 
 ## 팀구성
