@@ -67,8 +67,8 @@
 
 ```mermaid
 gantt
-    dateFormat  MM-DD
-    title       Example Gantt Chart
+    dateFormat  MM-DD-YYYY
+    title       모션인식 마우스 & 음성인식 키보드 프로젝트 GANTT CHART
 	
 	section Office Furniture
 		Research New Furniture	:done, 05-09, 3d
