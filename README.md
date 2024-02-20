@@ -9,9 +9,14 @@
 ### 마우스 더블클릭 (좌)
 ![마우스 더블클릭](proofvideo/mousedoubleclick.gif)
 
+### 마우스 클릭 (우)
+![마우스 더블클릭](proofvideo/mouserightclick.gif)
+
 ### 마우스 드래그
 ![마우스 드래그](proofvideo/mousedrag.gif)
 
 ### 마우스 클릭&드래그 (좌)
 ![마우스 클릭&드래그](proofvideo/mouseclickdrag.gif)
 
+### 키보드로 변경
+![마우스 클릭&드래그](proofvideo/mouse_to_keyboard.gif)
