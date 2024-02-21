@@ -28,11 +28,11 @@ def read_voice(): # 음성 인식을 하는 함수
         print(voice_data)
         return voice_data # 값 반환  
     
-    except sr.UnknownValueError:
+    except UnknownValueError:
         print("음성을 인식할 수 없습니다.")
         return None
     
-    except sr.RequestError as e:
+    except RequestError as e:
         print("음성 인식 서비스에 오류가 발생했습니다:", e)
         return None
     
