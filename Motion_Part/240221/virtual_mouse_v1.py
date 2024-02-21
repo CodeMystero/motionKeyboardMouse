@@ -127,7 +127,7 @@ while True:  # 무한 반복
                 pyautogui.moveTo(x, y)
                 
                 
-                if (Angle(points[8], points[6], points[5])) < 150 :
+                if (Angle(points[8], points[6], points[5])) < 150 : # 검지를 구부리는 조건식
                     print("click")
                     pyautogui.click()
                 
