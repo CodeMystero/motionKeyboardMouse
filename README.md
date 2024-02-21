@@ -43,7 +43,7 @@
 - 모션을 통한 마우스 제어 구현
 - 음성 인식을 통한 Speech to text 구현
 - 하드웨어 제어 최적화
-- 실행파일 생성
+- 실행파일(.exe) 생성
 
 ## Out of Scope:
 
@@ -73,12 +73,11 @@ gantt
 
 |BACKLOG  |TO-DO    |IN-PROGRESS        |COMPLETED       |
 |---------|---------|-------------------|----------------|
-|Speech to text 코딩  |         |                   |`completed`       |
-|영상 마킹         |         |`in-progress`        |                |
+|Speech to text 코딩|         |                   |`completed`       |
+|영상 마킹            |         |`in-progress`        |                |
 |모션 인식         |`to-do`    |                   |                |
 |코드 병합         |`to-do`    |                   |                |
 |실행 파일 생성         |`to-do`    |                   |                |
-|할일||`in-progress`||
 
 <br>
 
@@ -113,7 +112,7 @@ gantt
 |날짜|이름|뭐 했나요 ?|
 |---|---|---|
 |2024-02-20|김승환|- 깃허브 README 레이아웃 작성 <br> - 음성인식 코드 완료|
-
+|2024-02-21|임선웅|- 깃허브 README 수정 |
 
 <br>
 
