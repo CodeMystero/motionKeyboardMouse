@@ -143,10 +143,13 @@ gantt
 ![마우스 클릭&드래그](proofvideo/mouseclickdrag.gif)
 
 ### 마우스 스크롤 업
+![마우스 스크롤 업](proofvideo/mouse_scroll_up.gif)
 
 ### 마우스 스크롤 다운
+![마우스 스크롤 다운](proofvideo/mouse_scroll_down.gif)
 
 ### 키보드로 변경, 음성인식 시작
 ![마우스 클릭&드래그](proofvideo/mouse_to_keyboard.gif)
 
 ### 나가기
+![나가기](proofvideo/mouse_exit.gif)
