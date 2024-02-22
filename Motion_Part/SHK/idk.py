@@ -13,6 +13,7 @@ import pyaudio
 
 import time
 time_init = True
+time_init_dclick = True
 rad = 40
 
 dscr_speed = -30
@@ -23,9 +24,35 @@ fingers = None
 
 audio_flag = False
 
-# 거리 계산 함수 선언
+screen_width, screen_height = pyautogui.size()
+
+##################################### 거리 계산 함수 ##########################################################
 def distance(p1, p2):
-    return math.dist((p1.x, p1.y), (p2.x, p2.y))  # 두 점 p1, p2의 x, y 좌표로 거리를 계산한다.
+    return math.dist((p1.x, p1.y), (p2.x, p2.y))  
+
+##################################### 각도 계산 함수 ###########################################################
+def Angle(p1, p2, p3):   
+# 벡터 계산
+    v1 = (p1.x - p2.x, p1.y - p2.y)
+    v2 = (p3.x - p2.x, p3.y - p2.y)
+
+# 벡터의 크기 계산
+    v1_mag = math.sqrt(v1[0]**2 + v1[1]**2)
+    v2_mag = math.sqrt(v2[0]**2 + v2[1]**2)
+
+# 내적 계산
+    dot_product = v1[0] * v2[0] + v1[1] * v2[1]
+
+# 코사인 값 계산
+    cosine_angle = dot_product / (v1_mag * v2_mag)
+
+# 각도 계산 (라디안)
+    angle_rad = math.acos(cosine_angle)
+
+# 라디안 값을 각도로 변환하여 반환
+    return math.degrees(angle_rad)
+
+#########################################################################################################
 
 # 손 좌표 인식 함수 선언
 def dect_hand(image):
@@ -44,7 +71,8 @@ def dect_hand(image):
             )
 
             points = hand_landmarks.landmark  #  landmark 좌표 정보들을 points라는 변수로 활용
-    
+    else: 
+        return 0
 # 손가락 인식 함수 선언
 def dect_finger(points):
     global fingers
@@ -119,7 +147,7 @@ if __name__ == '__main__':
     voice_thread.start()
 #################################################################
          
-# MediaPipe 패키지에서 사용할 기능들.
+###################################### MediaPipe 패키지에서 사용할 기능들. ######################################
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands  # 손 인식을 위한 객체
@@ -133,9 +161,12 @@ if not cap.isOpened():  # 연결 확인
 hands = mp_hands.Hands()  # 손 인식 객체 생성
 
 
+############################################### MAIN #############################################################
+
 while True:  # 무한 반복
+
     res, frame = cap.read()  # 카메라 데이터 읽기
-    frame_height, frame_width, _ = frame.shape
+    #frame_height, frame_width, _ = frame.shape
 
     if not res:  # 프레임 읽었는지 확인
         print("Camera error")
@@ -145,96 +176,130 @@ while True:  # 무한 반복
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # 미디어파이프에서 인식 가능한 색공간으로 변경
     
 
-    dect_hand(image)
+    res = dect_hand(image)
     dect_finger(points)
+    if res != 0:
+    ####################################### 손가락 0개 ######################################################
+        if fingers == 0:
+            hand_shape = "rock"
+            cv2.putText(  # 인식된 내용을 이미지에 출력한다.
+                frame,
+                hand_shape,
+                (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
+                cv2.FONT_HERSHEY_COMPLEX,
+                1,
+                (0, 255, 0),
+                1
+            )
+            if audio_flag == False:
+                audio_flag = True  # 음성 인식 필요 시 audio_flag를 True로 설정
+            
+    ####################################### 손가락 2개 ######################################################       
+        elif fingers == 2:
+            time_init = True
+            if (points[11].y > points[10].y and points[15].y > points[14].y and points[19].y > points[18].y):
+                
+                x = int(points[4].x * screen_width)
+                y = int(points[4].y * screen_height)
 
-    if fingers == 0:
-        hand_shape = "rock"
-        cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-            frame,
-            hand_shape,
-            (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-            cv2.FONT_HERSHEY_COMPLEX,
-            1,
-            (0, 255, 0),
-            1
-        )
-        if audio_flag == False:
-            audio_flag = True  # 음성 인식 필요 시 audio_flag를 True로 설정
-        
-        
-    elif fingers == 2:
-        time_init = True
-        if distance(points[8], points[0]) > distance(points[7], points[0]) and\
-            distance(points[4], points[0]) > distance(points[3], points[0]):
+                pyautogui.moveTo(x, y)
+                
+                # 좌클릭
+                if Angle(points[4], points[2], points[8]) < 15 and not (points[4].y < points[8].y): 
+                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
+                    frame,
+                    "Left once",
+                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    1,
+                    (0, 255, 0),
+                    1
+                    )
+                    pyautogui.click()
+                    time.sleep(0.1)
+                    
+                #더블클릭
+                elif points[4].y < points[8].y: 
+                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
+                    frame,
+                    "Left Double",
+                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    1,
+                    (0, 255, 0),
+                    1
+                    )
+                    pyautogui.doubleClick()
+                    time.sleep(0.1)
+                # 우클릭
+                elif  Angle(points[4], points[2], points[8]) > 60: 
+                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
+                    frame,
+                    "Right once",
+                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    1,
+                    (0, 255, 0),
+                    1
+                    )
+                    pyautogui.click(button = 'right')
+                    time.sleep(0.1)
+    ####################################### 손가락 3개 ######################################################               
+        elif fingers == 3:
+            if (points[12].y < points[11].y and points[16].y > points[15].y and points[20].y > points[19].y\
+                and points[3].y > points[4].y):   
+                if points[4].x < points[17].x:
+                    pyautogui.scroll(uscr_speed)
+                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
+                    frame,
+                    "ScrUp",
+                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    1,
+                    (0, 255, 0),
+                    1
+                    )
+                elif points[17].x < points[4].x:
+                    pyautogui.scroll(dscr_speed)
+                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
+                    frame,
+                    "ScrDn",
+                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
+                    cv2.FONT_HERSHEY_COMPLEX,
+                    1,
+                    (0, 255, 0),
+                    1
+                    )
+                    
+    ####################################### 손가락 5개 ######################################################               
+        elif fingers == 5:
             cv2.putText(  # 인식된 내용을 이미지에 출력한다.
             frame,
-            "Default",
+            "Process Running",
             (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
             cv2.FONT_HERSHEY_COMPLEX,
             1,
             (0, 255, 0),
             1
             )
-            x = int(points[8].x * frame_width)
-            y = int(points[8].y * frame_height)
+            
+            if time_init:
+                ctime = time.time()
+                time_init = False
+            ptime = time.time()
 
-            pyautogui.moveTo(x*2, y*2)
-                
-    elif fingers == 3:
-        if (points[12].y < points[11].y and points[16].y > points[15].y and points[20].y > points[19].y\
-            and points[3].y > points[4].y):   
-            if points[4].x < points[17].x:
-                pyautogui.scroll(uscr_speed)
+            if (ptime - ctime) > 3:
                 cv2.putText(  # 인식된 내용을 이미지에 출력한다.
                 frame,
-                "ScrUp",
+                "Process ShutDown",
                 (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
                 cv2.FONT_HERSHEY_COMPLEX,
                 1,
                 (0, 255, 0),
                 1
                 )
-            elif points[17].x < points[4].x:
-                pyautogui.scroll(dscr_speed)
-                cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-                frame,
-                "ScrDn",
-                (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-                cv2.FONT_HERSHEY_COMPLEX,
-                1,
-                (0, 255, 0),
-                1
-                )
-                
-    elif fingers == 5:
-        cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-        frame,
-        "Process Running",
-        (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-        cv2.FONT_HERSHEY_COMPLEX,
-        1,
-        (0, 255, 0),
-        1
-        )
-        
-        if time_init:
-            ctime = time.time()
-            time_init = False
-        ptime = time.time()
-
-        if (ptime - ctime) > 5:
-            cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-            frame,
-            "Process ShutDown",
-            (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-            cv2.FONT_HERSHEY_COMPLEX,
-            1,
-            (0, 255, 0),
-            1
-            )
-            cv2.destroyAllWindows()  # 영상 창 닫기
-            cap.release()  # 비디오 캡처 객체 해제
+                cv2.destroyAllWindows()  # 영상 창 닫기
+                cap.release()  # 비디오 캡처 객체 해제
             
 
 
