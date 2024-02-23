@@ -52,6 +52,7 @@
 - C/C++ 사용해서 구현
 - 모바일 카메라를 사용할 수 있게 구현
 - 작업 표시줄에 실행 아이콘 생성
+- 마우스 클릭 드래그 구현
 
 ## Gantt Chart
 
@@ -163,11 +164,8 @@ gantt
 ### 마우스 클릭 (우)
 ![마우스 더블클릭](proofvideo/mouserightclick.gif)
 
-### 마우스 드래그
+### 마우스 이동
 ![마우스 드래그](proofvideo/mousedrag.gif)
-
-### 마우스 클릭&드래그 (좌)
-![마우스 클릭&드래그](proofvideo/mouseclickdrag.gif)
 
 ### 마우스 스크롤 업
 ![마우스 스크롤 업](proofvideo/mouse_scroll_up.gif)
