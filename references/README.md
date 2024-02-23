@@ -6,4 +6,4 @@
 
 <br>
 
-[mediapipe라이브러리 이용하여 가상 마우스 만드는 방법] <br>
+[mediapipe라이브러리 이용하여 가상 마우스 만드는 방법] <br> (https://img.youtube.com/vi/OrzYIv87hmk/0.jpg)](https://www.youtube.com/watch?v=OrzYIv87hmk)
