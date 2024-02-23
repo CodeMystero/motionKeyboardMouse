@@ -197,10 +197,10 @@ def mouse_loc_thread():
         pyautogui.moveTo(x, y)
          
 if __name__ == '__main__':
-    voice_thread = Thread(target=mouse_loc_thread)
-    voice_thread.daemon = True
-    voice_thread = Thread(target=mouse_loc_thread, daemon = True)
-    voice_thread.start()
+    mouse_thread = Thread(target=mouse_loc_thread)
+    mouse_thread.daemon = True
+    mouse_thread = Thread(target=mouse_loc_thread, daemon = True)
+    mouse_thread.start()
 
 
 #########################################################################################################
