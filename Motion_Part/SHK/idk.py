@@ -193,8 +193,19 @@ if __name__ == '__main__':
          
 def mouse_loc_thread():
     global x, y
+    
+    plocX, plocY = 0, 0
+    smoothening = 7
+    
     while True:
-        pyautogui.moveTo(x, y)
+        
+        clocX = plocX + (x - plocX) / smoothening
+        clocY = plocY + (y - plocY) / smoothening
+        
+        pyautogui.moveTo(clocX, clocY)
+        
+        plocX, plocY = clocX, clocY
+        
          
 if __name__ == '__main__':
     mouse_thread = Thread(target=mouse_loc_thread)
