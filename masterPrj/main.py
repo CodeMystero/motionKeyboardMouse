@@ -67,7 +67,7 @@ x, y = pyautogui.position()
 
 
 screen_width, screen_height = pyautogui.size()
-
+################################### 맵핑 함수 ################################################################
 def map_value(value, from_min, from_max, to_min, to_max):
     # 주어진 범위 내의 값(value)을 다른 범위(to_min ~ to_max)로 매핑하는 함수
     # 선형 보간법을 사용하여 값을 변환
@@ -108,36 +108,6 @@ def Angle(p1, p2, p3):
 # 라디안 값을 각도로 변환하여 반환
     return math.degrees(angle_rad)
 
-#########################################################################################################
-def findPosition(self, img, handNo=0, draw=True):
-        xList = []
-        yList = []
-        bbox = []
-        self.lmList = []
- 
-        if self.results.multi_hand_landmarks:
-            myHand = self.results.multi_hand_landmarks[handNo]
- 
-            for id, lm in enumerate(myHand.landmark):
-                # print(id, lm)
-                h, w, c = img.shape
-                cx, cy = int(lm.x * w), int(lm.y * h)
-                xList.append(cx)
-                yList.append(cy)
-                # print(id, cx, cy)
-                self.lmList.append([id, cx, cy])
- 
-                if draw:
-                    cv2.circle(img, (cx, cy), 6, (0, 0, 255), cv2.FILLED)
- 
-            xmin, xmax = min(xList), max(xList)
-            ymin, ymax = min(yList), max(yList)
-            bbox = xmin, ymin, xmax, ymax
- 
-            if draw:
-                cv2.rectangle(img, (bbox[0]-20, bbox[1]-20), (bbox[2]+20, bbox[3]+20), (0, 255, 0), 2)
- 
-        return self.lmList, bbox
 ###############################################################################################################
 # 손 좌표 인식 함수 선언
 def dect_hand(image):
@@ -285,26 +255,21 @@ hands = mp_hands.Hands()  # 손 인식 객체 생성
 
 while True:  # 무한 반복
 
-    res, frame = cap.read()  # 카메라 데이터 읽기
+    ret, frame = cap.read()  # 카메라 데이터 읽기
     
-    if not res:
-        print("Failed to read video frame")
-    
-    frame_height, frame_width, ch = frame.shape
-    # frameR = 100
-    output = frame.copy()
-    cv2.rectangle(frame, (int(0.3*frame_width), int(0.3*frame_height)), (int(0.7*frame_width), int(0.7*frame_height)), (218, 112, 214), -1)
-    frame = cv2.addWeighted(frame, 0.2, output, 1 - .2, 0, output)
-    
-    if not res:  # 프레임 읽었는지 확인
+    if not ret:  # 프레임 읽었는지 확인
         print("Camera error")
         break  # 반복문 종료
+    
+    frame_height, frame_width, ch = frame.shape
+    
+    output = frame.copy()
+    cv2.rectangle(frame, (int(0.3*frame_width), int(0.5*frame_height)), (int(0.7*frame_width), int(0.9*frame_height)), (218, 112, 214), -1)
+    frame = cv2.addWeighted(frame, 0.2, output, 1 - .2, 0, output)
 
     frame = cv2.flip(frame, 1)  # 셀프 카메라처럼 좌우 반전
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # 미디어파이프에서 인식 가능한 색공간으로 변경
     
-        
-
     res = dect_hand(image)
     dect_finger(points)
     if res != 0:
@@ -315,9 +280,10 @@ while True:  # 무한 반복
                 
     ####################################### 손가락 1개 ######################################################            
         if fingers == 1:
-            print("backspace")     
-            pyautogui.press('backspace')  
-            time.sleep(1)
+           if(distance(points[8], points[0]) > distance(points[7], points[0])):
+                print("backspace")     
+                pyautogui.press('backspace')  
+                time.sleep(0.5)
             
     ####################################### 손가락 2개 ######################################################       
         elif fingers == 2:
@@ -325,15 +291,16 @@ while True:  # 무한 반복
             if (points[11].y > points[10].y and points[15].y > points[14].y and points[19].y > points[18].y):
 
                 
-                if (points[4].x > 0.25 and points[4].x <0.75 and points[4].y > 0.25 and points[4].y <0.75):
+                if (points[4].x > 0.25 and points[4].x <0.75 and points[4].y > 0.45 and points[4].y <0.95):
                     x = int(map_value(points[4].x,0.3,0.7,0,screen_width))
-                    y = int(map_value(points[4].y,0.3,0.7,0,screen_height))
+                    y = int(map_value(points[4].y,0.5,0.9,0,screen_height))
                     
                 print("default")
                 # 좌클릭
                 if Angle(points[4], points[2], points[8]) < 15:
-                    print("left")
-                    pyautogui.click()
+                    if(points[2].y > points[13].y):
+                        print("left")
+                        pyautogui.click()
                     
                 
                 # 우클릭
@@ -368,10 +335,10 @@ while True:  # 무한 반복
                     )
     ####################################### 손가락 4개 ######################################################      
         elif fingers == 4:
-            if (points[17].x > points[5].x):
-                print("enter")
-                pyautogui.press('enter')
-                time.sleep(1)
+            if Angle(points[16], points[14], points[13]) > 170:
+                    print("enter")
+                    pyautogui.press('enter')
+                    time.sleep
             
     ####################################### 손가락 5개 ######################################################               
         elif fingers == 5:
@@ -380,7 +347,7 @@ while True:  # 무한 반복
                 time_init = False
             ptime = time.time()
 
-            if (ptime - ctime) > 5:
+            if (ptime - ctime) > 3:
                 
                 ####################### 엔딩 페이지 ########################
                 
