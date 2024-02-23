@@ -347,7 +347,10 @@ while True:  # 무한 반복
                 time_init = False
             ptime = time.time()
 
-            if (ptime - ctime) > 3:
+            if (ptime - ctime) > 5:
+                
+                cv2.destroyAllWindows()  # 영상 창 닫기
+                cap.release()  # 비디오 캡처 객체 해제
                 
                 ####################### 엔딩 페이지 ########################
                 
