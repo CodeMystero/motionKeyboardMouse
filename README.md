@@ -177,8 +177,10 @@ gantt
 ![마우스 클릭&드래그](proofvideo/mouse_to_keyboard.gif)
 
 ### Backspace
+![Backspace](proofvideo/Backspace.gif)
 
 ### Enter
+![Enter](proofvideo/Enter.gif)
 
 ### 나가기
 ![나가기](proofvideo/mouse_exit.gif)
