@@ -7,4 +7,4 @@
 <br>
 
 [mediapipe라이브러리 이용하여 가상 마우스 만드는 방법] <br> [![MediaPipe를 활용한 손/손가락 인식](https://img.youtube.com/vi/OrzYIv87hmk/0.jpg)](https://www.youtube.com/watch?v=OrzYIv87hmk)
- <br> [![IU(아이유) _ Into the I-LAND](http://img.youtube.com/vi/QYNwbZHmh8g/0.jpg)](https://youtu.be/QYNwbZHmh8g?t=0s) 
+ <br>  [![Create A Virtual Mouse](https://img.youtube.com/vi/vJWzH_2F64g/0.jpg)](https://www.youtube.com/watch?v=vJWzH_2F64g)
