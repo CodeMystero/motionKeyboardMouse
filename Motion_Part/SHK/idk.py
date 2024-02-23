@@ -15,8 +15,8 @@ time_init = True
 time_init_dclick = True
 rad = 40
 
-dscr_speed = -30
-uscr_speed = 30
+dscr_speed = -120
+uscr_speed = 120
 
 points = None
 fingers = None
@@ -195,7 +195,7 @@ def mouse_loc_thread():
     global x, y
     
     plocX, plocY = 0, 0
-    smoothening = 7
+    smoothening = 3
     
     while True:
         
@@ -225,7 +225,7 @@ cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # 비디오 캡처 객체 생성
 
 if not cap.isOpened():  # 연결 확인
     print("Camera is not opened")
-    sys.exit(1)  # 프로그램 종료
+    
 
 hands = mp_hands.Hands()  # 손 인식 객체 생성
 
@@ -235,6 +235,10 @@ hands = mp_hands.Hands()  # 손 인식 객체 생성
 while True:  # 무한 반복
 
     res, frame = cap.read()  # 카메라 데이터 읽기
+    
+    if not res:
+        print("Failed to read video frame")
+    
     frame_height, frame_width, ch = frame.shape
     # frameR = 100
     output = frame.copy()
@@ -257,6 +261,12 @@ while True:  # 무한 반복
         if fingers == 0:
             if audio_flag == False:
                 audio_flag = True  # 음성 인식 필요 시 audio_flag를 True로 설정
+                
+    ####################################### 손가락 1개 ######################################################            
+        if fingers == 1:
+            print("backspace")     
+            pyautogui.press('backspace')  
+            time.sleep(1)
             
     ####################################### 손가락 2개 ######################################################       
         elif fingers == 2:
@@ -268,9 +278,9 @@ while True:  # 무한 반복
                     x = int(map_value(points[4].x,0.3,0.7,0,screen_width))
                     y = int(map_value(points[4].y,0.3,0.7,0,screen_height))
                     
-                
+                print("default")
                 # 좌클릭
-                if Angle(points[4], points[2], points[8]) < 15 and not (points[4].y < points[8].y): 
+                if Angle(points[4], points[2], points[8]) < 15:
                     print("left")
                     pyautogui.click()
                     
@@ -305,34 +315,22 @@ while True:  # 무한 반복
                     (0, 255, 0),
                     1
                     )
-                    
+    ####################################### 손가락 4개 ######################################################      
+        elif fingers == 4:
+            if (points[17].x > points[5].x):
+                print("enter")
+                pyautogui.press('enter')
+                time.sleep(1)
+            
     ####################################### 손가락 5개 ######################################################               
         elif fingers == 5:
-            cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-            frame,
-            "Process Running",
-            (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-            cv2.FONT_HERSHEY_COMPLEX,
-            1,
-            (0, 255, 0),
-            1
-            )
-            
             if time_init:
                 ctime = time.time()
                 time_init = False
             ptime = time.time()
 
-            if (ptime - ctime) > 5:
-                cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-                frame,
-                "Process ShutDown",
-                (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-                cv2.FONT_HERSHEY_COMPLEX,
-                1,
-                (0, 255, 0),
-                1
-                )
+            if (ptime - ctime) > 3:
+                
                 cv2.destroyAllWindows()  # 영상 창 닫기
                 cap.release()  # 비디오 캡처 객체 해제
             
