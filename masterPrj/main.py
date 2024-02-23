@@ -1,5 +1,4 @@
 import cv2  # OpenCV 라이브러리 import
-import sys  # sys 모듈 import
 import mediapipe as mp  # MediaPipe 패키지 import하고 mp라는 별칭으로 사용하겠다는 뜻.
 import math  # math 모듈 import
 import pyautogui
@@ -9,8 +8,46 @@ from speech_recognition import *
 import clipboard
 import time
 import os
-import sys
 
+#######################PyQT###############
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout,  QDesktopWidget
+from PyQt5.QtGui import QMovie
+from PyQt5.QtCore import Qt, QTimer 
+
+
+class MainWindow(QWidget):
+    def __init__(self, gif_path, delay_time):
+        super().__init__()
+        self.gif_path = gif_path
+        self.delay_time = delay_time
+        self.initUI()
+
+    def initUI(self):
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        label = QLabel(self)
+        layout.addWidget(label)
+
+        movie = QMovie(self.gif_path)  # 사용자로부터 받은 GIF 파일 경로
+        label.setMovie(movie)
+        movie.start()
+        
+        # 타이머 설정
+        timer = QTimer(self)
+        timer.singleShot(self.delay_time, self.close)  # 사용자로부터 받은 딜레이 시간
+
+        # Title bar 제거
+        self.setWindowFlag(Qt.FramelessWindowHint)
+
+        # 화면 중앙에 윈도우 배치
+        #self.center()
+        self.setGeometry(400, 200, 400, 400)
+        
+        self.setWindowTitle('GIF Viewer')
+        self.show()
+##################################
 
 pyautogui.FAILSAFE = False
 
@@ -137,8 +174,9 @@ def dect_finger(points):
 
 ####################### 로딩 페이지 ########################
 def main():
-    # loadingPage.py 실행
-    os.system('python loadingPage.py')
+    app = QApplication(sys.argv)
+    window = MainWindow("loadingPage.gif",8000)
+    app.exec_()
 
 if __name__ == '__main__':
     main()
@@ -241,11 +279,7 @@ cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # 비디오 캡처 객체 생성
 if not cap.isOpened():  # 연결 확인
     print("Camera is not opened")
     
-
 hands = mp_hands.Hands()  # 손 인식 객체 생성
-
-
-
 
 ############################################### MAIN #############################################################
 
@@ -346,12 +380,23 @@ while True:  # 무한 반복
                 time_init = False
             ptime = time.time()
 
-            if (ptime - ctime) > 3:
+            if (ptime - ctime) > 5:
                 
-                cv2.destroyAllWindows()  # 영상 창 닫기
-                cap.release()  # 비디오 캡처 객체 해제
-            
+                ####################### 엔딩 페이지 ########################
+                
+                def main():
+                    app = QApplication(sys.argv)
+                    window = MainWindow("endingPage.gif",3000)
+                    sys.exit(app.exec_())
 
+                if __name__ == '__main__':
+                    main()
+
+                #############################################################
+    
+                # cv2.destroyAllWindows()  # 영상 창 닫기
+                # cap.release()  # 비디오 캡처 객체 해제
+            
 
     cv2.imshow("MediaPipe Hands", frame)
     cv2.waitKey(1)
