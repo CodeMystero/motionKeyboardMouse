@@ -176,5 +176,9 @@ gantt
 ### 키보드로 변경, 음성인식 시작
 ![마우스 클릭&드래그](proofvideo/mouse_to_keyboard.gif)
 
+### Backspace
+
+### Enter
+
 ### 나가기
 ![나가기](proofvideo/mouse_exit.gif)
