@@ -47,6 +47,7 @@ class MainWindow(QWidget):
         
         self.setWindowTitle('GIF Viewer')
         self.show()
+        self.raise_()
 ##################################
 
 pyautogui.FAILSAFE = False
