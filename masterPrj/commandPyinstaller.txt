@@ -8,6 +8,9 @@ pyinstaller --icon=icon_logo.ico -F -w main.py
 스펫파일 만들기
 pyi-makespec your_script.py
 
+스펙파일 컴파일
+pyinstaller main.spec
+
 미디아파이프.spec
 
 def get_mediapipe_path():
