@@ -82,11 +82,11 @@ gantt
 
 |BACKLOG  |TO-DO    |IN-PROGRESS        |COMPLETED       |
 |---------|---------|-------------------|----------------|
-|Speech to text 코딩|         |                   |`completed`       |
-|영상 마킹            |         |`in-progress`        |                |
-|모션 인식         |    |`in-progress`         |                |
-|코드 병합         |`to-do`    |                   |                |
-|실행 파일 생성         |`to-do`    |                   |                |
+|Speech to text 코딩|         |               |`completed`|
+|영상 마킹           |        |               |`completed`|
+|모션 인식           |        |               |`completed`|
+|코드 병합           |        |               |`completed`|
+|실행 파일 생성      |        |               |`completed`|
 
 <br>
 
@@ -152,7 +152,7 @@ gantt
 |2024-02-23| - 마우스 커서의 높은 딜레이 | 스레드 구현 | 해결 <br> (김승환) | 
 |2024-02-23| - 마우스 스크롤 속도의 늦음 | scr_speed 코드 수정 | 해결 <br> (임선웅) |
 |2024-02-23| - Backspace, Enter 기능의 부재 | finger==1 (Backspace), finger==4 (Enter) 코드 구현 | 해결 <br> (김승환) |
-|2024-02-23| - 프로세스 엔딩 출력 화면의 후순위 | (해결 방안) | 미해결 |
+|2024-02-23| - 프로세스 엔딩 출력 화면의 후순위 | self.raise_() 코드 구현 | 해결 <br> (김승환) |
 <br>
 
 # 기술 요약
