@@ -4,16 +4,11 @@ import mediapipe as mp  # MediaPipe 패키지 import하고 mp라는 별칭으로
 import math  # math 모듈 import
 import pyautogui
 import numpy as np
-
-
 from threading import Thread
-
 from speech_recognition import *
 import clipboard
-import keyboard
-import pyaudio
-
 import time
+
 time_init = True
 time_init_dclick = True
 rad = 40
@@ -25,6 +20,9 @@ points = None
 fingers = None
 
 audio_flag = False
+
+x = 150
+y = 150
 
 screen_width, screen_height = pyautogui.size()
 
@@ -137,12 +135,9 @@ def dect_finger(points):
 def read_voice(): # 음성 인식을 하는 함수
     r = Recognizer()
     mic = Microphone() # 마이크 객체
-    print("test1")
     try:
-        print("test1.5")
         with mic as source:
             audio = r.listen(source) # 음성 읽어오기
-        print("test2")
         voice_data = r.recognize_google(audio, language='ko')
         print(voice_data)
         return voice_data # 값 반환  
@@ -191,6 +186,22 @@ if __name__ == '__main__':
     voice_thread = Thread(target= voice_recognition_thread, daemon = True)
     voice_thread.start()
 #################################################################
+         
+########################### 마우스 커서 위치 스레드 ####################################################
+         
+def mouse_loc_thread():
+    global x, y
+    while True:
+        pyautogui.moveTo(x, y)
+         
+if __name__ == '__main__':
+    voice_thread = Thread(target=mouse_loc_thread)
+    voice_thread.daemon = True
+    voice_thread = Thread(target=mouse_loc_thread, daemon = True)
+    voice_thread.start()
+
+
+#########################################################################################################
          
 ###################################### MediaPipe 패키지에서 사용할 기능들. ######################################
 mp_drawing = mp.solutions.drawing_utils
@@ -261,7 +272,7 @@ while True:  # 무한 반복
                 if (points[4].x > 0.25 and points[4].x <0.75 and points[4].y > 0.25 and points[4].y <0.75):
                     x = int(map_value(points[4].x,0.3,0.7,0,screen_width))
                     y = int(map_value(points[4].y,0.3,0.7,0,screen_height))
-                    pyautogui.moveTo(x, y)
+                    
                 
 
                 # clocX = plocX + (x3 - plocX) / smoothening
