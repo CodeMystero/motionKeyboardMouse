@@ -9,6 +9,8 @@ from speech_recognition import *
 import clipboard
 import time
 
+pyautogui.FAILSAFE = False
+
 time_init = True
 time_init_dclick = True
 rad = 40
@@ -21,8 +23,8 @@ fingers = None
 
 audio_flag = False
 
-x = 150
-y = 150
+x, y = pyautogui.position()
+
 
 screen_width, screen_height = pyautogui.size()
 
@@ -242,16 +244,6 @@ while True:  # 무한 반복
     if res != 0:
     ####################################### 손가락 0개 ######################################################
         if fingers == 0:
-            hand_shape = "rock"
-            cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-                frame,
-                hand_shape,
-                (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-                cv2.FONT_HERSHEY_COMPLEX,
-                1,
-                (0, 255, 0),
-                1
-            )
             if audio_flag == False:
                 audio_flag = True  # 음성 인식 필요 시 audio_flag를 True로 설정
             
@@ -259,54 +251,23 @@ while True:  # 무한 반복
         elif fingers == 2:
             time_init = True
             if (points[11].y > points[10].y and points[15].y > points[14].y and points[19].y > points[18].y):
-                
-            
-                
-                # if frameR <= points[4].x <= frame_width - frameR:
-                #    x3 = np.interp(points[4].x, (frameR, frame_width-frameR), (0, screen_width))
-                # if frameR <= points[4].y <= frame_height - frameR:
-                #    y3 = np.interp(points[4].y, (frameR, frame_height-frameR), (0, screen_height))
-                
-                
+
                 
                 if (points[4].x > 0.25 and points[4].x <0.75 and points[4].y > 0.25 and points[4].y <0.75):
                     x = int(map_value(points[4].x,0.3,0.7,0,screen_width))
                     y = int(map_value(points[4].y,0.3,0.7,0,screen_height))
                     
                 
-
-                # clocX = plocX + (x3 - plocX) / smoothening
-                # clocY = plocY + (y3 - plocY) / smoothening
- 
- 
-                
                 # 좌클릭
                 if Angle(points[4], points[2], points[8]) < 15 and not (points[4].y < points[8].y): 
-                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-                    frame,
-                    "Left once",
-                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-                    cv2.FONT_HERSHEY_COMPLEX,
-                    1,
-                    (0, 255, 0),
-                    1
-                    )
+                    print("left")
                     pyautogui.click()
                     
                 
                 # 우클릭
                 elif  Angle(points[4], points[2], points[8]) > 60: 
-                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-                    frame,
-                    "Right once",
-                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-                    cv2.FONT_HERSHEY_COMPLEX,
-                    1,
-                    (0, 255, 0),
-                    1
-                    )
+                    print("right")
                     pyautogui.click(button = 'right')
-                    time.sleep(0.1)
     ####################################### 손가락 3개 ######################################################               
         elif fingers == 3:
             if (points[12].y < points[11].y and points[16].y > points[15].y and points[20].y > points[19].y\
