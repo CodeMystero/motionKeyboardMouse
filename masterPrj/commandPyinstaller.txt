@@ -1,0 +1,21 @@
+
+실행파일 만들기 
+pyinstaller --icon=icon_logo.ico -w main.py
+
+실행파일 만들기 싱글
+pyinstaller --icon=icon_logo.ico -F -w main.py
+
+스펫파일 만들기
+pyi-makespec your_script.py
+
+미디아파이프.spec
+
+def get_mediapipe_path():
+    import mediapipe
+    mediapipe_path = mediapipe.__path__[0]
+    return mediapipe_path
+
+mediapipe_tree = Tree(get_mediapipe_path(), prefix='mediapipe', excludes=["*.pyc"])
+a.datas += mediapipe_tree
+a.binaries = filter(lambda x: 'mediapipe' not in x[0], a.binaries)
+
