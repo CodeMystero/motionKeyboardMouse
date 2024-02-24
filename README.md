@@ -135,7 +135,7 @@ gantt
 
 # 💡프로젝트 일지
 
-<div style="overflow-x: auto; overflow-y: auto;">
+<div style="overflow-y: auto; max-height: 200px;">
 
 |날짜|이름|프로젝트 활동 사항|
 |---|---|---|
