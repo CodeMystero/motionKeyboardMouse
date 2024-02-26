@@ -186,10 +186,6 @@ gantt
 
 ## 마우스 움직임
 
-### Before
-
- 마우스 움직임을 끊김없이 부드럽게 움직이게 하였다.
-
  <div style="display:flex; flex-direction:row;">
     <img src="proofvideo/mouse_move_before.gif" style="width:150%;">
     <img src="proofvideo/mouse_move_after.gif" style="width:150%;">
