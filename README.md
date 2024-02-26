@@ -1,11 +1,11 @@
 
 ## 🛩️프로젝트 결과물 시연 영상 및 실행파일 다운로드 경로 
 
-### 프로젝트 결과물 시연영상
+### 프로젝트 결과물 시연영상⬇️
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/RZnwdc7voWI/0.jpg)](https://www.youtube.com/watch?v=RZnwdc7voWI)
 
-### 프로젝트 결과물 실행파일 다운로드 링크
+### 프로젝트 결과물 실행파일 다운로드 링크⬇️
 
 [실행파일 다운로드 - 압축 해제후 바로 사용 가능 (바탕화면에 바로가기 추가, main.exe파일 연결해 사용)](http://naver.me/583f6jlO)
 
