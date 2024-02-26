@@ -182,10 +182,25 @@ gantt
 
 # 🚀핵심 기술 요약
 
-## 손가락을 이용하여 모션 인식
+## 손가락 인식
 
-![Before](proofvideo/mouse_mmove_before.gif)
-![After](proofvideo/mouse_mmove_after.gif)
+## 마우스 움직임
+
+### Before
+
+![Before](proofvideo/mouse_move_before.gif)
+
+마우스의 움직임이 끊기는 것을 확인할 수 있다.
+
+### After
+![After](proofvideo/mouse_move_after.gif)
+
+ 마우스 움직임을 끊김없이 부드럽게 움직이게 하였다.
+
+## 사용자 친화적인 마우스 컨트롤
+![After](proofvideo/screen_user_friendly.gif)
+
+해당 프로그램 장기간 사용시 손과 어깨에 통증을 최소화시키고자 프레임 창에서 활동범위에 대한 알고리즘을 작성하였다. 
 
 ## 모션 사용법
 
