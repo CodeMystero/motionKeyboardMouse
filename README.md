@@ -1,18 +1,4 @@
-[실행파일 다운로드 - 압축 해제후 바로 사용 가능](https://drive.google.com/uc?export=download&id=19vxLbFp6WgoV8gJuoiVC1Jeyl2Fhwj47)
-
-https://drive.google.com/file/d/19vxLbFp6WgoV8gJuoiVC1Jeyl2Fhwj47/view?usp=drive_link
-
-[실행파일 다운로드 - 압축 해제후 바로 사용 가능](https://1drv.ms/u/c/c14417cfae7583f0/EWH0rlPO_BRPr5zdvsLx8toBJjm0C86kpJzkwroL5YLA2g?e=MeQuS7)
-
-[https://onedrive.live.com/?id=C14417CFAE7583F0%21s5c7c81559cae424a81e52ca16f1a396d&cid=C14417CFAE7583F0&download=1](https://1drv.ms/u/c/c14417cfae7583f0/EWH0rlPO_BRPr5zdvsLx8toBJjm0C86kpJzkwroL5YLA2g?e=MeQuS7)
-
-https://1drv.ms/u/c/c14417cfae7583f0/EWH0rlPO_BRPr5zdvsLx8toBJjm0C86kpJzkwroL5YLA2g?e=f8PQEr&download=1
-
-https://1drv.ms/u/c/c14417cfae7583f0/EWH0rlPO_BRPr5zdvsLx8toBJjm0C86kpJzkwroL5YLA2g?e=8ms5V7
-
-https://1drv.ms/u/c/c14417cfae7583f0/EWH0rlPO_BRPr5zdvsLx8toBJjm0C86kpJzkwroL5YLA2g
-
-http://naver.me/583f6jlO
+[실행파일 다운로드 - 압축 해제후 바로 사용 가능](http://naver.me/583f6jlO)
 
 # 🔥프로젝트 요약
 
