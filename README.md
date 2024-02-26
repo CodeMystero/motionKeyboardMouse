@@ -203,7 +203,7 @@ gantt
 
 `before`     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;              `After`
 
-마우스 움직임을 끊김없이 부드럽게 움직이게 하였다.
+마우스 커서 프레임의 속도를 향상시켰다.
 
 
 	
