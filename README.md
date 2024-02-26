@@ -195,7 +195,13 @@ gantt
     <img src="proofvideo/mouse_move_after.gif" style="width:150%;">
 </div>
 
+`before`     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;              `After`
+
+
+
+	
 ## 사용자 친화적인 마우스 컨트롤
+
 ![After](proofvideo/mouse_move_after.gif)
 
 해당 프로그램 장기간 사용시 손과 어깨에 통증을 최소화시키고자 프레임 창에서 활동범위에 대한 알고리즘을 작성하였다. 
