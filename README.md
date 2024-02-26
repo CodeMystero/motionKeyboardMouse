@@ -198,8 +198,8 @@ gantt
  마우스 움직임을 끊김없이 부드럽게 움직이게 하였다.
 
  <div style="display:flex; flex-direction:row;">
-    <img src="proofvideo/before_mouse_movement.gif" style="width:100%;">
-    <img src="proofvideo/after_mouse_movement.gif" style="width:100%;">
+    <img src="proofvideo/before_mouse_movement.gif" style="width:150%;">
+    <img src="proofvideo/after_mouse_movement.gif" style="width:150%;">
 </div>
 
 ## 사용자 친화적인 마우스 컨트롤
