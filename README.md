@@ -188,18 +188,11 @@ gantt
 
 ### Before
 
-![Before](proofvideo/before_mouse_movement.gif)
-
-마우스의 움직임이 끊기는 것을 확인할 수 있다.
-
-### After
-![After](proofvideo/after_mouse_movement.gif)
-
  마우스 움직임을 끊김없이 부드럽게 움직이게 하였다.
 
  <div style="display:flex; flex-direction:row;">
-    <img src="proofvideo/before_mouse_movement.gif" style="width:150%;">
-    <img src="proofvideo/after_mouse_movement.gif" style="width:150%;">
+    <img src="proofvideo/mouse_move_before.gif" style="width:150%;">
+    <img src="proofvideo/mouse_move_after.gif" style="width:150%;">
 </div>
 
 ## 사용자 친화적인 마우스 컨트롤
