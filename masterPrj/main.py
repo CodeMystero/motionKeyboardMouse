@@ -7,9 +7,9 @@ from threading import Thread
 from speech_recognition import *
 import clipboard
 import time
-import os
+#import os
 
-#######################PyQT###############
+                #+++++++++++++++++++++++++++ PyQT ++++++++++++++++++++++++++++
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout,  QDesktopWidget
 from PyQt5.QtGui import QMovie
@@ -41,21 +41,29 @@ class MainWindow(QWidget):
         # Title bar 제거
         self.setWindowFlag(Qt.FramelessWindowHint)
 
+        # 항상 최상위로 유지
+        self.setWindowFlag(Qt.WindowStaysOnTopHint)
+
+
         # 화면 중앙에 윈도우 배치
         #self.center()
+        
         self.setGeometry(400, 200, 400, 400)
         
         self.setWindowTitle('GIF Viewer')
         self.show()
-        self.raise_()
-##################################
 
+        
+                #+++++++++++++++++++++++++++ 글로벌 변수 선언 ++++++++++++++++++++++++++++
+
+# 마우스의 커서가 (0,0)으로 가면 자동으로 프로세스가 종료되는 FAILSAFE기능 False로 변환
 pyautogui.FAILSAFE = False
 
 time_init = True
 time_init_dclick = True
-rad = 40
+#rad = 40
 
+# 스크롤 업다운 스피드 설정
 dscr_speed = -120
 uscr_speed = 120
 
@@ -68,7 +76,7 @@ x, y = pyautogui.position()
 
 
 screen_width, screen_height = pyautogui.size()
-################################### 맵핑 함수 ################################################################
+                #+++++++++++++++++++++++++++ 디스플레이 맵핑 ++++++++++++++++++++++++++++
 def map_value(value, from_min, from_max, to_min, to_max):
     # 주어진 범위 내의 값(value)을 다른 범위(to_min ~ to_max)로 매핑하는 함수
     # 선형 보간법을 사용하여 값을 변환
@@ -83,11 +91,11 @@ def map_value(value, from_min, from_max, to_min, to_max):
     
     return new_value
 
-##################################### 거리 계산 함수 ##########################################################
+                #+++++++++++++++++++++++++++ 두 점 사이의 거리를 구하는 함수 ++++++++++++++++++++++++++++
 def distance(p1, p2):
     return math.dist((p1.x, p1.y), (p2.x, p2.y))  
 
-##################################### 각도 계산 함수 ###########################################################
+#                #+++++++++++++++++++++++++++ 두 점 사이의 각도를 구하는 함수 ++++++++++++++++++++++++++++
 def Angle(p1, p2, p3):   
 # 벡터 계산
     v1 = (p1.x - p2.x, p1.y - p2.y)
@@ -109,8 +117,8 @@ def Angle(p1, p2, p3):
 # 라디안 값을 각도로 변환하여 반환
     return math.degrees(angle_rad)
 
-###############################################################################################################
-# 손 좌표 인식 함수 선언
+                #+++++++++++++++++++++++++++ 손 좌표 인식 함수 ++++++++++++++++++++++++++++
+
 def dect_hand(image):
     global points
 
@@ -143,7 +151,7 @@ def dect_finger(points):
                 fingers += 1  # 폈으면 fingers에 1을 더한다.
                 
 
-####################### 로딩 페이지 ########################
+                #+++++++++++++++++++++++++++ 로딩 페이지 ++++++++++++++++++++++++++++
 def main():
     app = QApplication(sys.argv)
     window = MainWindow("loadingPage.gif",8000)
@@ -152,11 +160,10 @@ def main():
 if __name__ == '__main__':
     main()
 
-#############################################################
 
 
                 
-#################### 오디오 인식 관련 메소드 #####################
+                #+++++++++++++++++++++++++++ 음성 인식 ++++++++++++++++++++++++++++
 
 def read_voice(): # 음성 인식을 하는 함수
     r = Recognizer()
@@ -211,9 +218,9 @@ if __name__ == '__main__':
     voice_thread.daemon = True
     voice_thread = Thread(target= voice_recognition_thread, daemon = True)
     voice_thread.start()
-#################################################################
+
          
-########################### 마우스 커서 위치 스레드 ####################################################
+                #+++++++++++++++++++++++++++ 마우스 커서 결정 함수 ++++++++++++++++++++++++++++
          
 def mouse_loc_thread():
     global x, y
@@ -238,9 +245,8 @@ if __name__ == '__main__':
     mouse_thread.start()
 
 
-#########################################################################################################
          
-###################################### MediaPipe 패키지에서 사용할 기능들. ######################################
+                #+++++++++++++++++++++++++++ Mediapipe ++++++++++++++++++++++++++++
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands  # 손 인식을 위한 객체
@@ -252,9 +258,8 @@ if not cap.isOpened():  # 연결 확인
     
 hands = mp_hands.Hands()  # 손 인식 객체 생성
 
-############################################### MAIN #############################################################
-
-while True:  # 무한 반복
+                #+++++++++++++++++++++++++++ Main 함수 ++++++++++++++++++++++++++++
+while True: 
 
     ret, frame = cap.read()  # 카메라 데이터 읽기
     
@@ -274,19 +279,19 @@ while True:  # 무한 반복
     res = dect_hand(image)
     dect_finger(points)
     if res != 0:
-    ####################################### 손가락 0개 ######################################################
+                    #+++++++++++++++++++++++++++ 손가락 0 ++++++++++++++++++++++++++++
         if fingers == 0:
             if audio_flag == False:
                 audio_flag = True  # 음성 인식 필요 시 audio_flag를 True로 설정
                 
-    ####################################### 손가락 1개 ######################################################            
+                    #+++++++++++++++++++++++++++ 손가락 1 ++++++++++++++++++++++++++++
         if fingers == 1:
            if(distance(points[8], points[0]) > distance(points[7], points[0])):
                 print("backspace")     
                 pyautogui.press('backspace')  
                 time.sleep(0.5)
             
-    ####################################### 손가락 2개 ######################################################       
+                    #+++++++++++++++++++++++++++ 손가락 2 ++++++++++++++++++++++++++++       
         elif fingers == 2:
             time_init = True
             if (points[11].y > points[10].y and points[15].y > points[14].y and points[19].y > points[18].y):
@@ -308,40 +313,24 @@ while True:  # 무한 반복
                 elif  Angle(points[4], points[2], points[8]) > 60: 
                     print("right")
                     pyautogui.click(button = 'right')
-    ####################################### 손가락 3개 ######################################################               
+                    #+++++++++++++++++++++++++++ 손가락 3 ++++++++++++++++++++++++++++              
         elif fingers == 3:
             if (points[12].y < points[11].y and points[16].y > points[15].y and points[20].y > points[19].y\
                 and points[3].y > points[4].y):   
                 if points[4].x < points[17].x:
                     pyautogui.scroll(uscr_speed)
-                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-                    frame,
-                    "ScrUp",
-                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-                    cv2.FONT_HERSHEY_COMPLEX,
-                    1,
-                    (0, 255, 0),
-                    1
-                    )
+                    print("Scr Up")
                 elif points[17].x < points[4].x:
                     pyautogui.scroll(dscr_speed)
-                    cv2.putText(  # 인식된 내용을 이미지에 출력한다.
-                    frame,
-                    "ScrDn",
-                    (int(points[20].x * frame.shape[1]), int(points[20].y * frame.shape[0])),
-                    cv2.FONT_HERSHEY_COMPLEX,
-                    1,
-                    (0, 255, 0),
-                    1
-                    )
-    ####################################### 손가락 4개 ######################################################      
+                    print("Scr Down")
+                    #+++++++++++++++++++++++++++ 손가락 4 ++++++++++++++++++++++++++++    
         elif fingers == 4:
             if Angle(points[16], points[14], points[13]) > 170:
                     print("enter")
                     pyautogui.press('enter')
                     time.sleep
             
-    ####################################### 손가락 5개 ######################################################               
+                    #+++++++++++++++++++++++++++ 손가락 5 ++++++++++++++++++++++++++++            
         elif fingers == 5:
             if time_init:
                 ctime = time.time()
@@ -353,7 +342,7 @@ while True:  # 무한 반복
                 cv2.destroyAllWindows()  # 영상 창 닫기
                 cap.release()  # 비디오 캡처 객체 해제
                 
-                ####################### 엔딩 페이지 ########################
+                    #+++++++++++++++++++++++++++ 엔딩페이지  ++++++++++++++++++++++++++++
                 
                 def main():
                     app = QApplication(sys.argv)
@@ -365,10 +354,10 @@ while True:  # 무한 반복
 
                 #############################################################
     
-                # cv2.destroyAllWindows()  # 영상 창 닫기
-                # cap.release()  # 비디오 캡처 객체 해제
+                #cv2.destroyAllWindows()  # 영상 창 닫기
+                #cap.release()  # 비디오 캡처 객체 해제
             
 
-    cv2.imshow("MediaPipe Hands", frame)
-    cv2.waitKey(1)
+    # cv2.imshow("MediaPipe Hands", frame)
+    # cv2.waitKey(1)
    
