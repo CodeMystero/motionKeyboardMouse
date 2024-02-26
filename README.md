@@ -197,12 +197,13 @@ gantt
 
 `before`     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;              `After`
 
+마우스 움직임은 끊김없이 부드럽게 움직이게 하였다.
 
 
 	
 ## 사용자 친화적인 마우스 컨트롤
 
-![After](proofvideo/mouse_move_after.gif)
+![After](proofvideo/mouse_move_friendly.gif)
 
 해당 프로그램 장기간 사용시 손과 어깨에 통증을 최소화시키고자 프레임 창에서 활동범위에 대한 알고리즘을 작성하였다. 
 
