@@ -8,6 +8,8 @@ https://drive.google.com/file/d/19vxLbFp6WgoV8gJuoiVC1Jeyl2Fhwj47/view?usp=drive
 
 https://1drv.ms/u/c/c14417cfae7583f0/EWH0rlPO_BRPr5zdvsLx8toBJjm0C86kpJzkwroL5YLA2g?e=f8PQEr&download=1
 
+https://1drv.ms/u/c/c14417cfae7583f0/EWH0rlPO_BRPr5zdvsLx8toBJjm0C86kpJzkwroL5YLA2g?e=8ms5V7
+
 # 🔥프로젝트 요약
 
 **Project name:** 모션트랙킹 마우스 & 음성인식 키보드
