@@ -183,7 +183,8 @@ gantt
 # 🚀핵심 기술 요약
 
 ## 손가락을 이용하여 모션 인식
-![마우스 클릭](proofvideo/mouse_mmove_before.gif)![마우스 클릭](proofvideo/mouse_mmove_after.gif)
+![Before](proofvideo/mouse_mmove_before.gif)
+![After](proofvideo/mouse_mmove_after.gif)
 
 ## 모션 사용법
 
