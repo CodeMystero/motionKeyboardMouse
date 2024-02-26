@@ -1,5 +1,7 @@
 [실행파일 다운로드 - 압축 해제후 바로 사용 가능](https://drive.google.com/uc?export=download&id=19vxLbFp6WgoV8gJuoiVC1Jeyl2Fhwj47)
 
+https://drive.google.com/file/d/19vxLbFp6WgoV8gJuoiVC1Jeyl2Fhwj47/view?usp=drive_link
+
 # 🔥프로젝트 요약
 
 **Project name:** 모션트랙킹 마우스 & 음성인식 키보드
