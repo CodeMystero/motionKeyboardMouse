@@ -2,6 +2,8 @@
 
 https://drive.google.com/file/d/19vxLbFp6WgoV8gJuoiVC1Jeyl2Fhwj47/view?usp=drive_link
 
+https://onedrive.live.com/?id=C14417CFAE7583F0%21s5c7c81559cae424a81e52ca16f1a396d&cid=C14417CFAE7583F0&download=1
+
 # 🔥프로젝트 요약
 
 **Project name:** 모션트랙킹 마우스 & 음성인식 키보드
