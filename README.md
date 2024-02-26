@@ -3,7 +3,7 @@
 
 #### 프로젝트 결과물 시연영상⬇️👆
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/RZnwdc7voWI/0.jpg)](https://www.youtube.com/watch?v=RZnwdc7voWI)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/2D35Yc6kbcM/0.jpg)](https://www.youtube.com/watch?v=2D35Yc6kbcM)
 
 #### 프로젝트 결과물 실행파일 다운로드 링크⬇️👆
 
