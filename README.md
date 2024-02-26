@@ -1,13 +1,4 @@
 
-<iframe width="560" height="315" src="[https://youtu.be/RZnwdc7voWI?si=Z5U9nAaGG6aRP_4t](https://youtu.be/RZnwdc7voWI?si=0dYMUdAQyXLLgeko)" frameborder="0" allowfullscreen></iframe>
-
-https://youtu.be/RZnwdc7voWI?si=0dYMUdAQyXLLgeko
-
-[https://youtu.be/RZnwdc7voWI?si=Z5U9nAaGG6aRP_4t](https://youtu.be/RZnwdc7voWI?si=0dYMUdAQyXLLgeko)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RZnwdc7voWI?si=wnFUnHekh-w43CUk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/RZnwdc7voWI/0.jpg)](https://www.youtube.com/watch?v=RZnwdc7voWI)
 
 <br>
