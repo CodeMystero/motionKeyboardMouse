@@ -76,7 +76,7 @@ gantt
     title       모션인식 마우스& 음성인식 키보드 프로젝트 Gantt Chart
 	
 	section 음성인식 Speech to Text 코드 구현
-		자료 조사 및 코드 해석 :2024-02-19, 1d
+		자료 조사 및 코드 해석 :2024-02-18, 1d
                 코드 작성 및 STT구현 완료  :crit, 2024-02-19, 2d
 	
 	section 손동작 인식 마우스 제어
