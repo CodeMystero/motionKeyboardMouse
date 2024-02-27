@@ -9,6 +9,8 @@
 
 [실행파일 다운로드 - 압축 해제후 바로 사용 가능 (바탕화면에 바로가기 추가, main.exe파일 연결해 사용)](http://naver.me/583f6jlO)
 
+pdf링크: http://naver.me/FIoQl0h5
+
 <br>
 
 # 🔥프로젝트 요약
