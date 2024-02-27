@@ -102,11 +102,13 @@ gantt
 
 |BACKLOG  |TO-DO    |IN-PROGRESS        |COMPLETED       |
 |---------|---------|-------------------|----------------|
-|Speech to text 코딩|         |               |`completed`|
+|음성 인식 |         |               |`completed`|
 |영상 마킹           |        |               |`completed`|
 |모션 인식           |        |               |`completed`|
+|디버깅 및 테스트      |        |               |`completed`|
 |코드 병합           |        |               |`completed`|
 |실행 파일 생성      |        |               |`completed`|
+|발표 준비      |        |               |`completed`|
 
 <br>
 
